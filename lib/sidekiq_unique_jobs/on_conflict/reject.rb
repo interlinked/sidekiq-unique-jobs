@@ -14,12 +14,7 @@ module SidekiqUniqueJobs
 
       def send_to_deadset
         log_info { "Adding dead #{item[CLASS_KEY]} job #{item[JID_KEY]}" }
-
-        if deadset_kill?
-          deadset_kill
-        else
-          push_to_deadset
-        end
+        false
       end
 
       def deadset_kill?
